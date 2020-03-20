@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
-import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { baseUrl } from '../shared/baseUrl';
-import { FadeTransform, Fade, Stagger } from 'react-animation-components';
-import { Loading } from './LoadingComponent';
-import {Elements, StripeProvider} from 'react-stripe-elements';
-import CheckoutForm from './CheckoutFormComponent';
-import {CardSection} from '../shared/CardSection.js';
 import StripeCheckout from 'react-stripe-checkout';
-import {Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Jumbotron, Button, Modal, ModalHeader, ModalBody,
-    Form, FormGroup, Input, Label } from 'reactstrap';
-import firebase from 'firebase';
 import {auth} from '../firebase.js';
+import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardHeader from '@material-ui/core/CardHeader';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Grid from '@material-ui/core/Grid';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
+
 
 
 class Checkout extends Component {
@@ -36,6 +39,7 @@ class Checkout extends Component {
             silverPlan: false,
             goldPlan: false
         });
+        console.log("Bronze Button was clicked");
     }
     
     toggleSilver(){
@@ -44,6 +48,7 @@ class Checkout extends Component {
             bronzePlan: false,
             goldPlan: false
         });
+        console.log("Silver Button was clicked");
     }
 
     toggleGold(){
@@ -52,6 +57,7 @@ class Checkout extends Component {
             bronzePlan: false,
             silverPlan: false
         });
+        console.log("Gold Button was clicked");
     }
 
     signedInUser(){
@@ -93,7 +99,149 @@ class Checkout extends Component {
         }
     }
 
+    
+
     render(){
+
+        const useStyles = makeStyles(theme => ({
+            '@global': {
+              ul: {
+                margin: 0,
+                padding: 0,
+                listStyle: 'none',
+              },
+            },
+            appBar: {
+              borderBottom: `1px solid ${theme.palette.divider}`,
+            },
+            toolbar: {
+              flexWrap: 'wrap',
+            },
+            toolbarTitle: {
+              flexGrow: 1,
+            },
+            heroContent: {
+              padding: theme.spacing(8, 0, 6),
+            },
+            cardHeader: {
+              backgroundColor:
+                theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[700],
+            },
+            cardPricing: {
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'baseline',
+              marginBottom: theme.spacing(2),
+            }
+          }));
+
+          const tiers = [
+            {
+              title: 'Bronze',
+              price: '0',
+              description: ['10 users included', '2 GB of storage', 'Help center access', 'Email support'],
+              buttonText: 'Sign up for bronze',
+              buttonVariant: 'outlined',
+            },
+            {
+              title: 'Silver',
+              subheader: 'Most popular',
+              price: '15',
+              description: [
+                '20 users included',
+                '10 GB of storage',
+                'Help center access',
+                'Priority email support',
+              ],
+              buttonText: 'Sign up for silver',
+              buttonVariant: 'contained',
+            },
+            {
+              title: 'Gold',
+              price: '30',
+              description: [
+                '50 users included',
+                '30 GB of storage',
+                'Help center access',
+                'Phone & email support',
+              ],
+              buttonText: 'Sign up for gold',
+              buttonVariant: 'outlined',
+            },
+          ]
+
+          const tierSelect = (title) => {
+              if(title === "Bronze"){
+                  return this.toggleBronze;
+              }
+              else if (title === "Silver"){
+                  return this.toggleSilver
+              }
+              else if (title === "Gold"){
+                  return this.toggleGold
+              }
+          }
+          
+        const Pricing = (props) => {
+            const classes = useStyles();
+          
+            return (
+              <React.Fragment>
+                <CssBaseline />
+                {/* Hero unit */}
+                <Container maxWidth="sm" component="main" className={classes.heroContent}>
+                  <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
+                    Pricing
+                  </Typography>
+                  <Typography variant="h5" align="center" color="textSecondary" component="p">
+                    Quickly build an effective pricing table for your potential customers with this layout.
+                    It&apos;s built with default Material-UI components with little customization.
+                  </Typography>
+                </Container>
+                {/* End hero unit */}
+                <Container maxWidth="md" component="main">
+                  <Grid container spacing={5} alignItems="flex-end">
+                    {tiers.map(tier => (
+                      // Enterprise card is full width at sm breakpoint
+                      <Grid item key={tier.title} xs={12} sm={tier.title === 'Enterprise' ? 12 : 6} md={4}>
+                        <Card>
+                          <CardHeader
+                            title={tier.title}
+                            subheader={tier.subheader}
+                            titleTypographyProps={{ align: 'center' }}
+                            subheaderTypographyProps={{ align: 'center' }}
+                            className={classes.cardHeader}
+                          />
+                          <CardContent>
+                            <div className={classes.cardPricing}>
+                              <Typography component="h2" variant="h3" color="textPrimary">
+                                ${tier.price}
+                              </Typography>
+                              <Typography variant="h6" color="textSecondary">
+                                /mo
+                              </Typography>
+                            </div>
+                            <ul>
+                              {tier.description.map(line => (
+                                <Typography component="li" variant="subtitle1" align="center" key={line}>
+                                  {line}
+                                </Typography>
+                              ))}
+                            </ul>
+                          </CardContent>
+                          <CardActions>
+                            <Button fullWidth variant={tier.buttonVariant} color="primary" onClick={tierSelect(tier.title)}>
+                              {tier.buttonText}
+                            </Button>
+                          </CardActions>
+                        </Card>
+                      </Grid>
+                    ))}
+                  </Grid>
+                </Container>
+              </React.Fragment>
+            );
+          }
 
     return(
         <div className="container">
@@ -110,23 +258,14 @@ class Checkout extends Component {
             </div>
             <div className = "d-flex justify-content-center">
                 <div className="row align-items-center">
-                    <div className="m-4">
-                        <Button color="danger" onClick={this.toggleBronze}>
-                            <span className="fa fa-sign-in fa-lg"></span> Bronze</Button>
-                    </div>
-                    <div className="m-4">
-                        <Button color="secondary" onClick={this.toggleSilver}>
-                            <span className="fa fa-sign-in fa-lg"></span> Silver</Button>
-                    </div>
-                    <div className="m-4">
-                        <Button color="warning" onClick={this.toggleGold}>
-                            <span className="fa fa-sign-out-alt fa-lg"></span> Gold</Button>
-                    </div>
+                <Pricing />
                 </div> 
             </div>     
+            <div style={{marginTop: "30px", marginLeft:"100px", marginBottom: "50px"}}>
                 <StripeCheckout
-                    token={this.onToken}
-                    stripeKey="pk_test_riF4lNBnYKk2Caz9oJPJDEkg00vHb7arwy"/>
+                        token={this.onToken}
+                        stripeKey="pk_test_riF4lNBnYKk2Caz9oJPJDEkg00vHb7arwy"/>
+            </div>  
         </div>
     );
     }

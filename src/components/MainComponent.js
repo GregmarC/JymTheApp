@@ -87,6 +87,9 @@ class Main extends Component {
     else if (this.props.location.pathname ==='/appointment') {
       return "";
     }
+    else if (this.props.location.pathname ==='/checkout') {
+      return "";
+    }
     else{
       return <Header/>;
     }
