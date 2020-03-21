@@ -5,6 +5,7 @@ import StripeCheckout from 'react-stripe-checkout';
 import {auth} from '../firebase.js';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
+import CardMedia from '@material-ui/core/CardMedia';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -14,6 +15,9 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import bronze from '../images/bronze.jpg';
+import silver from '../images/silver.jpg';
+import gold from '../images/gold.jpg';
 
 
 
@@ -118,6 +122,10 @@ class Checkout extends Component {
             appBar: {
               borderBottom: `1px solid ${theme.palette.divider}`,
             },
+            media: {
+                height: 0,
+                paddingTop: '56.25%', // 16:9
+              },
             toolbar: {
               flexWrap: 'wrap',
             },
@@ -197,6 +205,18 @@ class Checkout extends Component {
                   return "primary";
               }
           }
+
+          const choosePic = (title) => {
+              if (title === "Bronze"){
+                  return bronze;
+              }
+              if (title === "Silver"){
+                  return silver;
+              }
+              if (title === "Gold"){
+                  return gold;
+              }
+          }
           
         const Pricing = (props) => {
             const classes = useStyles();
@@ -210,8 +230,8 @@ class Checkout extends Component {
                     Pricing
                   </Typography>
                   <Typography variant="h5" align="center" color="textSecondary" component="p">
-                    Quickly build an effective pricing table for your potential customers with this layout.
-                    It&apos;s built with default Material-UI components with little customization.
+                    Enjoying Jym's services and want to continue utilizing all that it has to offer? 
+                    Then perhaps you should consider signing up for a Jym monthly membership! Choose from our three plans below.
                   </Typography>
                 </Container>
                 {/* End hero unit */}
@@ -228,6 +248,11 @@ class Checkout extends Component {
                             subheaderTypographyProps={{ align: 'center' }}
                             className={classes.cardHeader}
                           />
+                          <CardMedia
+                            className={classes.media}
+                            image={choosePic(tier.title)}
+                            title="Price Plan"
+                        />
                           <CardContent>
                             <div className={classes.cardPricing}>
                               <Typography component="h2" variant="h3" color="textPrimary">
