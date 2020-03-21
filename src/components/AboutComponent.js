@@ -4,50 +4,11 @@ import { Link } from 'react-router-dom';
 import { baseUrl } from '../shared/baseUrl';
 import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 import { Loading } from './LoadingComponent';
+import {StandaloneToggleButton} from './ToggleButtonComponent';
 
 
 
 function About(props) {
-    
-    const leaders= props.leaders.map((leader) => { return (<Fade in><RenderLeader leader= {leader} /></Fade>); });
-	
-	function RenderLeader(props) {
-        if (props.isLoading) {
-            return(
-                <div className="container">
-                    <div className="row">            
-                        <Loading />
-                    </div>
-                </div>
-            );
-        }
-        else if (props.errMess) {
-            return(
-                <div className="container">
-                    <div className="row">            
-                        <h4>{props.errMess}</h4>
-                    </div>
-                </div>
-            );
-        }
-        else{
-		return(
-            <FadeTransform 
-                in 
-                transformProps={{
-                exitTransform: 'scale(0.5) translateY(-50%)'}}>
-                    <div class='media'>
-                        <img class='d-flex mr-3 img-thumbnail align-self-center' src={baseUrl + props.leader.image} alt='alberto' />
-                        <div class='media-body'>
-                            <h2>{props.leader.name}</h2>
-                            <h4>{props.leader.designation}</h4>
-                            <p class='d-none d-sm-block'> {props.leader.description} </p>
-                        </div>
-                    </div>
-            </FadeTransform>
-            );
-        }
-	}
 
     
     return(
@@ -55,18 +16,18 @@ function About(props) {
             <div className="row">
                 <Breadcrumb>
                     <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
-                    <BreadcrumbItem active>About Us</BreadcrumbItem>
+                    <BreadcrumbItem active>About Jym</BreadcrumbItem>
                 </Breadcrumb>
                 <div className="col-12">
-                    <h3>About Us</h3>
+                    <h3>About Jym</h3>
                     <hr />
                 </div>                
             </div>
             <div className="row row-content">
                 <div className="col-12 col-md-6">
                     <h2>Our History</h2>
-                    <p>Started in 2010, Ristorante con Fusion quickly established itself as a culinary icon par excellence in Hong Kong. With its unique brand of world fusion cuisine that can be found nowhere else, it enjoys patronage from the A-list clientele in Hong Kong.  Featuring four of the best three-star Michelin chefs in the world, you never know what will arrive on your plate the next time you visit us.</p>
-                    <p>The restaurant traces its humble beginnings to <em>The Frying Pan</em>, a successful chain started by our CEO, Mr. Peter Pan, that featured for the first time the world's best cuisines in a pan.</p>
+                    <p>Started in 2020, <em><b>Jym's</b></em> mission is to raise the total fitness and health of the nation through exercise, eductation, and nutrition. In modern society, it is far too easy to fall victim to poor health practices, often times without us even realizing it.  There are many factors that contribute to the overall poor health of the nation, however, two of the main culprits are easily lack of exercise and diet.  </p>
+                    <p>Fortunately, <em><b>Jym</b></em> is here to combat the shortcomings of the nation's health policies and keep us all feeling healthier and looking better!</p>
                 </div>
                 <div className="col-12 col-md-5">
                     <Card>
@@ -74,13 +35,13 @@ function About(props) {
                         <CardBody>
                             <dl className="row p-1">
                                 <dt className="col-6">Started</dt>
-                                <dd className="col-6">3 Feb. 2013</dd>
-                                <dt className="col-6">Major Stake Holder</dt>
-                                <dd className="col-6">HK Fine Foods Inc.</dd>
-                                <dt className="col-6">Last Year's Turnover</dt>
-                                <dd className="col-6">$1,250,375</dd>
-                                <dt className="col-6">Employees</dt>
-                                <dd className="col-6">40</dd>
+                                <dd className="col-6">Feb. 2020</dd>
+                                <dt className="col-6">Total Jym Users</dt>
+                                <dd className="col-6"></dd>
+                                <dt className="col-6">Total Jym Trainers</dt>
+                                <dd className="col-6"></dd>
+                                <dt className="col-6">Total Jym Workouts</dt>
+                                <dd className="col-6"></dd>
                             </dl>
                         </CardBody>
                     </Card>
@@ -89,30 +50,13 @@ function About(props) {
                     <Card>
                         <CardBody className="bg-faded">
                             <blockquote className="blockquote">
-                                <p className="mb-0">You better cut the pizza in four pieces because
-                                    I'm not hungry enough to eat six.</p>
-                                <footer className="blockquote-footer">Yogi Berra,
-                                <cite title="Source Title">The Wit and Wisdom of Yogi Berra,
-                                    P. Pepe, Diversion Books, 2014</cite>
+                                <p className="mb-0">If there were a drug that could do for human health everything that exercise can, it would likely be the most valuable pharmaceutical ever developed.</p>
+                                <footer className="blockquote-footer">Dr. Mark Tanopolsky,
+                                <cite title="Source Title">Genetic Metabolic Neurologist at McMaster University in Ontario</cite>
                                 </footer>
                             </blockquote>
                         </CardBody>
                     </Card>
-                </div>
-            </div>
-
-            <div className="row row-content">
-                <div className="col-12 mb-3">
-                    <h2>Corporate Leadership</h2>
-                </div>
-                <div className="col-12">
-                    
-                        <Media list>
-                            <Stagger in>
-                                {leaders}
-                            </Stagger>
-                        </Media>
-                    
                 </div>
             </div>
 

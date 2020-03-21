@@ -23,7 +23,8 @@ class Checkout extends Component {
         this.state = {
             bronzePlan : false,
             silverPlan : false,
-            goldPlan : false
+            goldPlan : false,
+            buttonClicked: false
         };
 
         this.onToken = this.onToken.bind(this);
@@ -37,7 +38,8 @@ class Checkout extends Component {
         this.setState({
             bronzePlan: true,
             silverPlan: false,
-            goldPlan: false
+            goldPlan: false,
+            buttonClicked: true
         });
         console.log("Bronze Button was clicked");
     }
@@ -46,7 +48,8 @@ class Checkout extends Component {
         this.setState({
             silverPlan: true,
             bronzePlan: false,
-            goldPlan: false
+            goldPlan: false,
+            buttonClicked: true
         });
         console.log("Silver Button was clicked");
     }
@@ -55,7 +58,8 @@ class Checkout extends Component {
         this.setState({
             goldPlan: true,
             bronzePlan: false,
-            silverPlan: false
+            silverPlan: false,
+            buttonClicked: true
         });
         console.log("Gold Button was clicked");
     }
@@ -141,7 +145,7 @@ class Checkout extends Component {
               price: '0',
               description: ['10 users included', '2 GB of storage', 'Help center access', 'Email support'],
               buttonText: 'Sign up for bronze',
-              buttonVariant: 'outlined',
+              buttonVariant: 'contained',
             },
             {
               title: 'Silver',
@@ -166,7 +170,7 @@ class Checkout extends Component {
                 'Phone & email support',
               ],
               buttonText: 'Sign up for gold',
-              buttonVariant: 'outlined',
+              buttonVariant: 'contained',
             },
           ]
 
@@ -179,6 +183,18 @@ class Checkout extends Component {
               }
               else if (title === "Gold"){
                   return this.toggleGold
+              }
+          }
+
+          const activeButton = (title) => {
+              if (title === "Bronze" && this.state.bronzePlan === true) {
+                  return "primary";
+              }
+              else if (title === "Silver" && this.state.silverPlan === true) {
+                  return "primary";
+              }
+              else if (title === "Gold" && this.state.goldPlan === true) {
+                  return "primary";
               }
           }
           
@@ -230,7 +246,7 @@ class Checkout extends Component {
                             </ul>
                           </CardContent>
                           <CardActions>
-                            <Button fullWidth variant={tier.buttonVariant} color="primary" onClick={tierSelect(tier.title)}>
+                            <Button fullWidth variant={tier.buttonVariant} color={activeButton(tier.title)} onClick={tierSelect(tier.title)}>
                               {tier.buttonText}
                             </Button>
                           </CardActions>

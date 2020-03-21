@@ -2,14 +2,14 @@ import firebase from "firebase";
 
 // Initialize Firebase
 const firebaseConfig = {
-  apiKey: "AIzaSyDlfcfX5KAzUMXoxl3MUG_CTHUCOFiCB0Q",
-  authDomain: "jym-the-app.firebaseapp.com",
-  databaseURL: "https://jym-the-app.firebaseio.com",
-  projectId: "jym-the-app",
-  storageBucket: "jym-the-app.appspot.com",
-  messagingSenderId: "1081796670448",
-  appId: "1:1081796670448:web:fb37022c8699fe70a36335",
-  measurementId: "G-K8B6NHHJF1"
+    apiKey: "AIzaSyDcdVrvBv6R4ubgkK2Hvlu4fjthx1erpK8",
+    authDomain: "jym-the-app-4f14a.firebaseapp.com",
+    databaseURL: "https://jym-the-app-4f14a.firebaseio.com",
+    projectId: "jym-the-app-4f14a",
+    storageBucket: "jym-the-app-4f14a.appspot.com",
+    messagingSenderId: "280569083402",
+    appId: "1:280569083402:web:dc2e6b529c3ecc5b3051f3",
+    measurementId: "G-ZJP4H7W14B"
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
