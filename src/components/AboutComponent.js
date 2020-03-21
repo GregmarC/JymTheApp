@@ -26,7 +26,7 @@ function About(props) {
             <div className="row row-content">
                 <div className="col-12 col-md-6">
                     <h2>Our History</h2>
-                    <p>Started in 2020, <em><b>Jym's</b></em> mission is to raise the total fitness and health of the nation through exercise, eductation, and nutrition. In modern society, it is far too easy to fall victim to poor health practices, often times without us even realizing it.  There are many factors that contribute to the overall poor health of the nation, however, two of the main culprits are easily lack of exercise and diet.  </p>
+                    <p>Started in 2020, <em><b>Jym's</b></em> mission is to raise the total fitness and health of the nation through exercise, education and awareness, and nutrition. In modern society, it is far too easy to fall victim to poor health practices, often times without us even realizing it.  There are many factors that contribute to the overall poor health of the nation, however, two of the main culprits are easily lack of exercise and diet.  </p>
                     <p>Fortunately, <em><b>Jym</b></em> is here to combat the shortcomings of the nation's health policies and keep us all feeling healthier and looking better!</p>
                 </div>
                 <div className="col-12 col-md-5">
