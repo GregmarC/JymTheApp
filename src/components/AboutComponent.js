@@ -37,11 +37,11 @@ function About(props) {
                                 <dt className="col-6">Started</dt>
                                 <dd className="col-6">Feb. 2020</dd>
                                 <dt className="col-6">Total Jym Users</dt>
-                                <dd className="col-6"></dd>
+                                <dd className="col-6">TBD</dd>
                                 <dt className="col-6">Total Jym Trainers</dt>
-                                <dd className="col-6"></dd>
+                                <dd className="col-6">TBD</dd>
                                 <dt className="col-6">Total Jym Workouts</dt>
-                                <dd className="col-6"></dd>
+                                <dd className="col-6">TBD</dd>
                             </dl>
                         </CardBody>
                     </Card>
