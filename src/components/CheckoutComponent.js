@@ -18,6 +18,7 @@ import Container from '@material-ui/core/Container';
 import bronze from '../images/bronze.jpg';
 import silver from '../images/silver.jpg';
 import gold from '../images/gold.jpg';
+import {stripeKey2} from '../keys.js';
 
 
 
@@ -103,7 +104,8 @@ class Checkout extends Component {
         });
         if (response.ok){
             var body = await response.json(); 
-            console.log(body)
+            console.log(body);
+            alert("Thank you and congratulations! You have successfully purchased a monthly Jym account!");
         }
     }
 
@@ -305,7 +307,7 @@ class Checkout extends Component {
             <div style={{marginTop: "30px", marginLeft:"100px", marginBottom: "50px"}}>
                 <StripeCheckout
                         token={this.onToken}
-                        stripeKey="pk_test_riF4lNBnYKk2Caz9oJPJDEkg00vHb7arwy"/>
+                        stripeKey={`${stripeKey2}`}/>
             </div>  
         </div>
     );

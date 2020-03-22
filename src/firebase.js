@@ -1,8 +1,9 @@
 import firebase from "firebase";
+import {firebaseKey} from './keys.js';
 
 // Initialize Firebase
 const firebaseConfig = {
-    apiKey: "AIzaSyDcdVrvBv6R4ubgkK2Hvlu4fjthx1erpK8",
+    apiKey: `${firebaseKey}`,
     authDomain: "jym-the-app-4f14a.firebaseapp.com",
     databaseURL: "https://jym-the-app-4f14a.firebaseio.com",
     projectId: "jym-the-app-4f14a",
