@@ -1,11 +1,5 @@
 import React from 'react';
-import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle} from 'reactstrap';
-import { Loading } from './LoadingComponent';
-import { baseUrl } from '../shared/baseUrl';
-import { FadeTransform } from 'react-animation-components';
-import bronze from '../images/bronze.jpg';
-import silver from '../images/silver.jpg';
-import gold from '../images/gold.jpg';
+import { Card, CardImg, CardText, CardBody} from 'reactstrap';
 import sleepy from '../images/sleepy.jpg';
 import motivation from '../images/motivation.png';
 import trainer from '../images/trainer.jpg';

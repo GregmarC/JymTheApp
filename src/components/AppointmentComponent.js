@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import { googleKey } from '../shared/googleKey';
-import { Map, GoogleApiWrapper } from 'google-maps-react';
 import GoogleMap from './GoogleMapComponent';
-import { Button, Form, FormGroup, Label, Input, FormText, Modal, ModalHeader, ModalBody, Row, Col, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody, Row, Col, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { Control, LocalForm, Errors } from 'react-redux-form';
 import {auth} from '../firebase.js';
 import {db} from '../firebase.js';
 

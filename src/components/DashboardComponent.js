@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {auth} from '../firebase.js';
-import userIcon from '../images/userIcon.jpg';
 
 
 function Dashboard(props) {

@@ -1,14 +1,10 @@
 import React, {Component} from 'react';
-import {Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Jumbotron as Jumbo, Button, Modal, ModalHeader, ModalBody,
-    Form, FormGroup, Input, Label, Row, Col, Media, Container } from 'reactstrap';
+import {Navbar, Nav, NavbarToggler, Collapse, NavItem, Jumbotron as Jumbo, Button, Modal, ModalHeader, ModalBody,
+    Form, FormGroup, Input, Label, Row, Container } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import {auth} from '../firebase.js'
-import firebase from "firebase";
 import {db} from '../firebase.js';
 import styled from 'styled-components';
-import poof from '../images/poof.jpg';
-import Image from 'react-bootstrap/Image';
-import dashboard from '../images/dashboard.jpg';
 import exercise from '../images/exercise.jpg';
 import '../App.css';
 
