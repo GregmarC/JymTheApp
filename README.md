@@ -2,7 +2,7 @@
 
 -Web App developed with React and Node.JS to directly connect clients with nearby personal trainers
 
--Incorporates third party APIs such as firebase to store and manage users, firebase cloud to perform serverless backend functions, stripe to handle future payments, GoogleMaps to indicate to trainers and to users the availability and general location.
+-Incorporates third party APIs such as firebase to store and manage users, firebase cloud to perform serverless backend functions, stripe to handle future payments, GoogleMaps to indicate to trainers and to users, availability and general location.
 
 <br>
 <br>
